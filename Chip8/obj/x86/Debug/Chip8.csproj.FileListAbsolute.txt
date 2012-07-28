@@ -1,0 +1,11 @@
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\Chip8.exe
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\Chip8.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Debug\Chip8.exe
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Debug\Chip8.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-audio-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-graphics-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-window-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-audio-2.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-graphics-2.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Debug\sfmlnet-window-2.pdb

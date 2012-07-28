@@ -1,0 +1,11 @@
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\Chip8.exe
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\Chip8.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Release\Chip8.exe
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\obj\x86\Release\Chip8.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-audio-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-graphics-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-window-2.dll
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-audio-2.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-graphics-2.pdb
+C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-window-2.pdb
