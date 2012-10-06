@@ -20,7 +20,7 @@ namespace Chip8
             else
             {
                 Emulator em = new Emulator();
-                Console.WriteLine(args[0]);
+                //Console.WriteLine(args[0]);
                 string FILELOAD = args[0];
                 em.LoadROM(FILELOAD);
 
