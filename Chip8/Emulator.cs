@@ -96,18 +96,18 @@ namespace Chip8
             byte[] parseRaw = new byte[2] { memory[currentOpcode + 1], memory[currentOpcode] };
             ushort parseConvert = BitConverter.ToUInt16(parseRaw, 0);
             //Console.WriteLine(currentOpcode + "\t" + String.Format("{0,10:X}", parseConvert));
-            parseOpcode(parseConvert);
+            bool screenchanged = parseOpcode(parseConvert);
             MemoryMod(false, memory[currentOpcode]);
             for (int i = 0; i < 2; i++)
             {
                 if(timers[i] > 0)
                 timers[i]--;
             }
-            return true;
+            return screenchanged;
         }
         void MemoryMod(bool written, int address)
         {
-            int row = address / 40;
+         /*   int row = address / 40;
             int col = address % 40 * 2;
             MemoryQ.Enqueue(address);
             Console.SetCursorPosition(col, row);
@@ -128,7 +128,7 @@ namespace Chip8
             col = CullAddress % 40 * 2;
             Console.SetCursorPosition(col, row);
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Write(" ");
+            Console.Write(" ");*/
         }
         void applyFontToMemory()
         {
@@ -193,9 +193,9 @@ namespace Chip8
             inputSent = true;
         }
 
-        void parseOpcode(ushort opcode)
+        bool parseOpcode(ushort opcode)
         {
-
+            bool ScreenChanged =  false;
             switch (opcode & (0xF000))
             {
                 case(0x0000):
@@ -216,6 +216,7 @@ namespace Chip8
                                 screen[x, y] = 0;
                             }
                         }
+                        ScreenChanged = true;
                         stepInstrucion();
                     }
                     else
@@ -442,7 +443,7 @@ namespace Chip8
                 case (0xD000): //DXYN
                     {
                         //Draws a sprite at coordinate (VX, VY) that has a width of 8 pixels and a height of N pixels. Each row of 8 pixels is read as bit-coded (with the most significant bit of each byte displayed on the left) starting from memory location I; I value doesn't change after the execution of this instruction. As described above, VF is set to 1 if any screen pixels are flipped from set to unset when the sprite is drawn, and to 0 if that doesn't happen.
-
+                        ScreenChanged = true;
                         byte x = (byte)((opcode & 0x0F00) >> 8);
                         byte y = (byte)((opcode & 0x00F0) >> 4);
                         byte n = (byte)(opcode & 0x000F);
@@ -615,8 +616,9 @@ namespace Chip8
                 default:
                     Console.WriteLine("Unknown");
                     break;
-                   
-            }
+               }
+            return ScreenChanged;
+            
         }
     }
 }
