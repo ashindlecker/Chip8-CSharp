@@ -20,7 +20,9 @@ namespace Chip8
         ushort addressRegister;
         Random randomizer;
         bool inputSent;
+        Queue<int> MemoryQ = new Queue<int>();
 
+        
         const uint FONTMEMORYOFFSET = 0;
 
         enum TimerTypes: byte
@@ -57,6 +59,11 @@ namespace Chip8
             screen = new byte[64 , 32];
             currentOpcode = 0;
 
+            for (int i = 0; i < 100; i++)
+            {
+                MemoryQ.Enqueue(0);
+            }
+
             Reset();
         }
 
@@ -89,16 +96,40 @@ namespace Chip8
             byte[] parseRaw = new byte[2] { memory[currentOpcode + 1], memory[currentOpcode] };
             ushort parseConvert = BitConverter.ToUInt16(parseRaw, 0);
             //Console.WriteLine(currentOpcode + "\t" + String.Format("{0,10:X}", parseConvert));
-            parseOpcode(parseConvert);
-
+            bool screenchanged = parseOpcode(parseConvert);
+            MemoryMod(false, memory[currentOpcode]);
             for (int i = 0; i < 2; i++)
             {
                 if(timers[i] > 0)
                 timers[i]--;
             }
-            return true;
+            return screenchanged;
         }
+        void MemoryMod(bool written, int address)
+        {
+         /*   int row = address / 40;
+            int col = address % 40 * 2;
+            MemoryQ.Enqueue(address);
+            Console.SetCursorPosition(col, row);
+            if (written)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("W");
+            }
+            else
+            {
 
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.Write("R");
+            }
+            int CullAddress = MemoryQ.Dequeue();
+
+            row = CullAddress / 40;
+            col = CullAddress % 40 * 2;
+            Console.SetCursorPosition(col, row);
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Write(" ");*/
+        }
         void applyFontToMemory()
         {
             //Characters 0-F (in hexadecimal) are represented by a 4x5 font.
@@ -143,6 +174,7 @@ namespace Chip8
                 for (int i = 0; i < data.Length; i++)
                 {
                     memory[i + PROGRAMMEMORYSTART] = data[i];
+                    MemoryMod(true, i + PROGRAMMEMORYSTART);
                 }
                 applyFontToMemory();
                 currentOpcode = PROGRAMMEMORYSTART;
@@ -161,9 +193,9 @@ namespace Chip8
             inputSent = true;
         }
 
-        void parseOpcode(ushort opcode)
+        bool parseOpcode(ushort opcode)
         {
-
+            bool ScreenChanged =  false;
             switch (opcode & (0xF000))
             {
                 case(0x0000):
@@ -184,6 +216,7 @@ namespace Chip8
                                 screen[x, y] = 0;
                             }
                         }
+                        ScreenChanged = true;
                         stepInstrucion();
                     }
                     else
@@ -410,7 +443,7 @@ namespace Chip8
                 case (0xD000): //DXYN
                     {
                         //Draws a sprite at coordinate (VX, VY) that has a width of 8 pixels and a height of N pixels. Each row of 8 pixels is read as bit-coded (with the most significant bit of each byte displayed on the left) starting from memory location I; I value doesn't change after the execution of this instruction. As described above, VF is set to 1 if any screen pixels are flipped from set to unset when the sprite is drawn, and to 0 if that doesn't happen.
-
+                        ScreenChanged = true;
                         byte x = (byte)((opcode & 0x0F00) >> 8);
                         byte y = (byte)((opcode & 0x00F0) >> 4);
                         byte n = (byte)(opcode & 0x000F);
@@ -423,7 +456,7 @@ namespace Chip8
                         for (int height = 0; height < n; height++)
                         {
                             byte memoryLook = memory[addressRegister + height];
-
+                            MemoryMod(false, addressRegister + height);
                             for (int width = 0; width < 8; width++)
                             {
 
@@ -435,7 +468,7 @@ namespace Chip8
 
                                 if ((memoryLook & (0x80 >> width)) != 0)
                                 {
-                                    Console.WriteLine(coordY + ", " + coordY);
+                                    //Console.WriteLine(coordY + ", " + coordY);
                                     if (screen[coordX, coordY] == 1)  //flip from set to unset
                                     {
                                         registers[15] = 1;
@@ -538,10 +571,14 @@ namespace Chip8
                             case (0x0033):
                                 //Stores the Binary-coded decimal representation of VX, with the most significant of three digits at the address in I, the middle digit at I plus 1, and the least significant digit at I plus 2.  
                                 //credit goes to Laurence Muller for the explanation of this opcode (http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/)
-                               
+                                
                                 memory[addressRegister]     = (byte)(registers[x] / 100);
                                 memory[addressRegister + 1] = (byte)((registers[x] / 10) % 10);
                                 memory[addressRegister + 2] = (byte)((registers[x] % 100) % 10);
+
+                                MemoryMod(true, addressRegister);
+                                MemoryMod(true, addressRegister+1);
+                                MemoryMod(true, addressRegister+2);
                                 stepInstrucion();
                                 break;
 
@@ -551,6 +588,7 @@ namespace Chip8
                                 for (int r = 0; r <= x; r++)
                                 {
                                     memory[addressRegister + r] = registers[r];
+                                    MemoryMod(true, addressRegister + r);
                                 }
                                 addressRegister = (ushort)(addressRegister + x + 1);
                                 stepInstrucion();
@@ -562,6 +600,7 @@ namespace Chip8
                                 for (int r = 0; r <= x; r++)
                                 {
                                     registers[r] = memory[addressRegister + r];
+                                    MemoryMod(false, addressRegister + r);
                                 }
                                 addressRegister = (ushort)(addressRegister + x + 1);
                                 stepInstrucion();
@@ -577,8 +616,9 @@ namespace Chip8
                 default:
                     Console.WriteLine("Unknown");
                     break;
-                   
-            }
+               }
+            return ScreenChanged;
+            
         }
     }
 }

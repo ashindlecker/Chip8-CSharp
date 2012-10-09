@@ -9,3 +9,19 @@ C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\s
 C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-audio-2.pdb
 C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-graphics-2.pdb
 C:\Users\Austech\Documents\Visual Studio 2010\Projects\Chip8\Chip8\bin\Release\sfmlnet-window-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\obj\x86\Release\Chip8.exe
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\obj\x86\Release\Chip8.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\bin\Release\Chip8.exe
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\bin\Release\Chip8.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\bin\Release\sfmlnet-audio-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\bin\Release\sfmlnet-graphics-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\bin\Release\sfmlnet-window-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp\Chip8\obj\x86\Release\Chip8.csprojResolveAssemblyReference.cache
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\obj\x86\Release\Chip8.exe
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\obj\x86\Release\Chip8.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\bin\Release\Chip8.exe
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\bin\Release\Chip8.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\bin\Release\sfmlnet-audio-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\bin\Release\sfmlnet-graphics-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\bin\Release\sfmlnet-window-2.pdb
+C:\Users\Ben\Documents\GitHub\Chip8-CSharp-Old\Chip8\obj\x86\Release\Chip8.csprojResolveAssemblyReference.cache
